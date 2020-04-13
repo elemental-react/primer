@@ -1,0 +1,40 @@
+{
+  "name": "@elemental-react/material-example",
+  "version": "0.0.1",
+  "description": "",
+  "skpm": {
+    "main": "elemental-react-material.sketchplugin",
+    "manifest": "src/manifest.json"
+  },
+  "scripts": {
+    "build": "skpm-build",
+    "watch": "skpm-build --watch",
+    "render": "skpm-build --watch --run",
+    "render:once": "skpm-build --run",
+    "postinstall": "npm run build && skpm-link"
+  },
+  "author": "Macintosh Helper <noreply@macintoshhelper.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@skpm/builder": "^0.5.15"
+  },
+  "dependencies": {
+    "@vx/gradient": "0.0.183",
+    "@vx/group": "0.0.183",
+    "@vx/mock-data": "0.0.185",
+    "@vx/scale": "0.0.182",
+    "@vx/shape": "0.0.184",
+    "chroma-js": "^1.2.2",
+    "d3-scale": "^3.0.0",
+    "elemental-react": "^0.1.1",
+    "prop-types": "^15.5.8",
+    "react": "^16.13.1",
+    "react-primitives": "^0.8.1",
+    "react-primitives-svg": "0.0.3",
+    "react-sketchapp": "^3.1.1",
+    "react-test-renderer": "^16.13.1",
+    "styled-components": "^5.1.0",
+    "styled-system": "^5.1.5",
+    "yoga-layout-prebuilt": "^1.9.5"
+  }
+}
