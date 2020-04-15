@@ -1,32 +1,21 @@
-import React from 'react';
+import { extend } from 'elemental-react';
 
-import DefaultButton from './DefaultButton';
-import RaisedButton from './RaisedButton';
-import UnelevatedButton from './UnelevatedButton';
-import OutlinedButton from './OutlinedButton';
+import BaseButton from './BaseButton';
 
-const getButtonFromType = (props) => {
-  const { raised, outlined, danger, unelevated } = props;
-
-  if (raised) {
-    return RaisedButton;
+const Button = extend(BaseButton, () => ({
+  ':hover': {
+    backgroundColor: 'rgb(243, 244, 246)',
+    boxShadow: 'rgba(209, 213, 218, 0.2) 0px 1px 0px, rgba(255, 255, 255, 0.1) 0px 2px 0px inset',
+  },
+  ':focus': {
+    boxShadow: 'rgba(3, 102, 214, 0.3) 0px 0px 0px 3px',
+    borderColor: 'transparent',
+  },
+  ':active': {
+    backgroundColor: 'rgb(237, 239, 242)',
+    boxShadow: 'rgba(149, 157, 165, 0.1) 0px 2px 0px inset',
+    borderColor: 'rgb(209, 213, 218)',
   }
-  if (unelevated) {
-    return UnelevatedButton;
-  }
-  if (outlined) {
-    return OutlinedButton;
-  }
-
-  return DefaultButton;
-}
-
-const Button = (props) => {
-  const ButtonComp = getButtonFromType(props);
-
-  return (
-    <ButtonComp {...props} />
-  );
-}
+}));
 
 export default Button;
