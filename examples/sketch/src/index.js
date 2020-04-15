@@ -6,17 +6,22 @@ import {
   width as styledWidth, position, space, height as styledHeight,
 } from 'styled-system';
 import {
-  render, Document, Page, Artboard, RedBox,
+  render, Document, Page, Artboard, RedBox, View
 } from 'react-sketchapp';
 import chroma from 'chroma-js';
+import { MDXProvider } from '@mdx-js/react';
 
 import {
-  styled, ThemeProvider, Box, Text,
+  styled, ThemeProvider, Box, Text, Row,
 } from 'elemental-react';
 
-import Button from '../../../src/buttons/Button';
+import { Button, ButtonDanger, ButtonOutline, ButtonPrimary, ButtonGroup } from '../../../src/buttons';
+import { Avatar, AvatarPair } from '../../../src/avatars';
 
+import mdComponents from './i18n/components';
 import theme from './styles/theme';
+
+import Test from './docs/test';
 
 const StyledText = styled(Text)`
   color: blue;
@@ -134,16 +139,92 @@ const DocumentContainer = ({ colors }) => (
   <Document>
     <ErrorBoundary>
       <ThemeProvider theme={theme}>
-        <>
-          <Page name="Style Guide">
-            <Artboard name="Buttons">
-              <Button label="Button" />
-              <Button label="Raised" raised />
-              <Button label="Unelevated" unelevated />
-              <Button label="Outlined" outlined />
-            </Artboard>
-          </Page>
-        </>
+        <MDXProvider components={mdComponents}>
+          <>
+            <Page name="Docs">
+              <Artboard>
+                <Test />
+              </Artboard>
+            </Page>
+            <Page name="Style Guide">
+              <Artboard name="Buttons">
+                <Row>
+                  <Button m={2}>
+                    Button
+                  </Button>
+                  <ButtonDanger m={2}>
+                    Button Danger
+                  </ButtonDanger>
+                  <ButtonOutline m={2}>
+                    Button Outline
+                  </ButtonOutline>
+                  <ButtonPrimary m={2}>
+                    Button Primary
+                  </ButtonPrimary>
+                </Row>
+                {['hover', 'focus', 'active'].map(pseudoState => (
+                  <Row key={pseudoState}>
+                    {[{
+                      label: 'Button', component: Button,
+                    }, {
+                      label: 'Button Danger', component: ButtonDanger,
+                    }, {
+                      label: 'Button Outline', component: ButtonOutline,
+                    }, {
+                      label: 'Button Primary', component: ButtonPrimary,
+                    }].map(({ label, component: Button_ }) => (
+                      <Button_ m={2} pseudoState={pseudoState}>
+                        {label}
+                      </Button_>
+                    ))}
+                  </Row>
+                ))}
+                <ButtonGroup p={2}>
+                  <Button>
+                    Button
+                  </Button>
+                  <ButtonDanger>
+                    Button Danger
+                  </ButtonDanger>
+                  <ButtonOutline>
+                    Button Outline
+                  </ButtonOutline>
+                  <ButtonPrimary>
+                    Button Primary
+                  </ButtonPrimary>
+                </ButtonGroup>
+                <Box>
+                  <View
+                    style={{
+                      width: 60,
+                      height: 60,
+                      borderRadius: 6,
+                      borderTopLeftRadius: 12,
+                      borderBottomLeftRadius: 12,
+                      borderTopRightRadius: 12,
+                      borderBottomRightRadius: 12,
+                      borderRightWidth: 0,
+                      borderLeftWidth: 2,
+                      borderTopWidth: 2,
+                      borderBottomWidth: 2,
+                      borderColor: 'green',
+                      backgroundColor: 'blue',
+                    }}
+                  />
+                </Box>
+              </Artboard>
+            </Page>
+            <Page name="Avatar">
+              <Box>
+                <Avatar mb={4} boxShadow="rgba(255, 255, 255, 0.8) -2px -2px 0px" src="https://avatars.githubusercontent.com/primer" size={128} />
+                <AvatarPair my={4}>
+                  <Avatar src="https://avatars.githubusercontent.com/primer" />
+                  <Avatar src="https://avatars.githubusercontent.com/primer" />
+                </AvatarPair>
+              </Box>
+            </Page>
+          </>
+        </MDXProvider>
       </ThemeProvider>
     </ErrorBoundary>
   </Document>

@@ -1,9 +1,9 @@
 {
-  "name": "@elemental-react/material-example",
+  "name": "@elemental-react/primer-example",
   "version": "0.0.1",
   "description": "",
   "skpm": {
-    "main": "elemental-react-material.sketchplugin",
+    "main": "elemental-react-primer.sketchplugin",
     "manifest": "src/manifest.json"
   },
   "scripts": {
@@ -16,9 +16,14 @@
   "author": "Macintosh Helper <noreply@macintoshhelper.com>",
   "license": "MIT",
   "devDependencies": {
-    "@skpm/builder": "^0.5.15"
+    "@mdx-js/loader": "^1.5.8",
+    "@mdx-js/mdx": "^1.5.8",
+    "@skpm/builder": "^0.5.15",
+    "mdx-loader-primitives": "^1.0.0"
   },
   "dependencies": {
+    "@elemental-design/style-guide": "0.0.2",
+    "@mdx-js/react": "^1.5.8",
     "@vx/gradient": "0.0.183",
     "@vx/group": "0.0.183",
     "@vx/mock-data": "0.0.185",
@@ -27,6 +32,7 @@
     "chroma-js": "^1.2.2",
     "d3-scale": "^3.0.0",
     "elemental-react": "^0.1.1",
+    "gray-matter": "^4.0.2",
     "prop-types": "^15.5.8",
     "react": "^16.13.1",
     "react-primitives": "^0.8.1",

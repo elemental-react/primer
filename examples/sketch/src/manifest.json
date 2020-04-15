@@ -3,7 +3,7 @@
   "bundleVersion": 1,
   "commands": [
     {
-      "name": "@elemental-react/material: Basic Example",
+      "name": "@elemental-react/primer: Basic Example",
       "identifier": "main",
       "script": "./index.js"
     }

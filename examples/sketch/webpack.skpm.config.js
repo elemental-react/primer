@@ -11,10 +11,17 @@ const path = require('path');
  **/
 module.exports = (config) => {
   /* you can change config here */
+  config.module.rules[1].test = /^(?!.*\.(jsx?|tsx?|json|nib|md|mdx|xib|framework|xcodeproj|xcworkspace|xcworkspacedata|pbxproj)$).*/;
+
+  config.module.rules.push({
+    test: /\.(md|mdx)$/,
+    exclude: /(node_modules|bower_components)/,
+    use: ['babel-loader', 'mdx-loader-primitives'],
+  });
 
   config.resolve = {
     ...config.resolve,
-    extensions: [...config.resolve.extensions, '.jsx'],
+    extensions: [...config.resolve.extensions, '.jsx', '.md'],
     alias: {
       ...config.resolve.alias,
       'react': path.resolve(__dirname, './node_modules/react/'),
